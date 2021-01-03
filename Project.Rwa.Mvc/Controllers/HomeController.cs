@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project.Rwa.Mvc.Resources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,23 +9,47 @@ namespace Project.Rwa.Mvc.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Login()
         {
             return View();
         }
 
-        public ActionResult About()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(Djelatnik objUser)
         {
-            ViewBag.Message = "Your application description page.";
+            if (ModelState.IsValid)
+            {
+                using (WorkHoursEntities db = new WorkHoursEntities())
+                {
+                    var obj = db.Djelatniks.Where(a => a.Email.Equals(objUser.Email) 
+                            && a.Zaporka.Equals(objUser.Zaporka)).FirstOrDefault();
 
-            return View();
+                    if (obj != null)
+                    {
+                        Session["UserEmail"] = obj.Email;
+                        return RedirectToAction("MainPage");
+                    }
+
+
+                }
+            }
+
+            ModelState.AddModelError("", Strings.FailedLoginMessage);
+
+            return View(objUser);
         }
 
-        public ActionResult Contact()
+        public ActionResult MainPage()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            if (Session["UserEmail"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
     }
 }

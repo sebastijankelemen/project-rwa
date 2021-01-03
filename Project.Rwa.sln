@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Rwa.Mvc", "Project.Rwa.Mvc\Project.Rwa.Mvc.csproj", "{4E5DD5AB-6F8B-46E1-A898-B95720797836}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Rwa.Mvc", "Project.Rwa.Mvc\Project.Rwa.Mvc.csproj", "{02742894-5E4A-48E2-9266-631CD92C0AC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4E5DD5AB-6F8B-46E1-A898-B95720797836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4E5DD5AB-6F8B-46E1-A898-B95720797836}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4E5DD5AB-6F8B-46E1-A898-B95720797836}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4E5DD5AB-6F8B-46E1-A898-B95720797836}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02742894-5E4A-48E2-9266-631CD92C0AC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02742894-5E4A-48E2-9266-631CD92C0AC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02742894-5E4A-48E2-9266-631CD92C0AC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02742894-5E4A-48E2-9266-631CD92C0AC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
