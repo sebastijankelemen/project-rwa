@@ -88,6 +88,15 @@ namespace Project.Rwa.Mvc.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Workhours list.
+        /// </summary>
+        public static string MainPage {
+            get {
+                return ResourceManager.GetString("MainPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Work Hours.
         /// </summary>
         public static string MainTitle {

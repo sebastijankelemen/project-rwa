@@ -20,18 +20,14 @@ namespace Project.Rwa.Mvc.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (WorkHoursEntities db = new WorkHoursEntities())
+                WorkHoursEntities db = new WorkHoursEntities();
+                var obj = db.Djelatniks.Where(a => a.Email.Equals(objUser.Email)
+                           && a.Zaporka.Equals(objUser.Zaporka)).FirstOrDefault();
+
+                if (obj != null)
                 {
-                    var obj = db.Djelatniks.Where(a => a.Email.Equals(objUser.Email) 
-                            && a.Zaporka.Equals(objUser.Zaporka)).FirstOrDefault();
-
-                    if (obj != null)
-                    {
-                        Session["UserEmail"] = obj.Email;
-                        return RedirectToAction("MainPage");
-                    }
-
-
+                    Session["UserEmail"] = obj.Email;
+                    return RedirectToAction("MainPage");
                 }
             }
 
@@ -44,7 +40,9 @@ namespace Project.Rwa.Mvc.Controllers
         {
             if (Session["UserEmail"] != null)
             {
-                return View();
+
+                WorkHoursEntities db = new WorkHoursEntities();
+                return View(db.Projekts.ToList());
             }
             else
             {

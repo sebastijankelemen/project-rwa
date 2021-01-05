@@ -1,8 +1,51 @@
-﻿
+﻿@model IEnumerable<Project.Rwa.Mvc.Projekt>
+
 @{
     ViewBag.Title = "MainPage";
 }
 
 <h2>MainPage</h2>
 
-<input type="date" value=@(DateTime.Now)>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatumOtvaranja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VoditeljProjektaID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Klijent.Naziv)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DatumOtvaranja)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VoditeljProjektaID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Klijent.Naziv)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDProjekt }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDProjekt }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDProjekt })
+        </td>
+    </tr>
+}
+
+</table>
