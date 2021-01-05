@@ -104,5 +104,59 @@ namespace Project.Rwa.Mvc.Resources {
                 return ResourceManager.GetString("MainTitle", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overtime.
+        /// </summary>
+        public static string OverTimeHours {
+            get {
+                return ResourceManager.GetString("OverTimeHours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project.
+        /// </summary>
+        public static string Project {
+            get {
+                return ResourceManager.GetString("Project", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop.
+        /// </summary>
+        public static string ProjectEnd {
+            get {
+                return ResourceManager.GetString("ProjectEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        public static string ProjectStart {
+            get {
+                return ResourceManager.GetString("ProjectStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project duration.
+        /// </summary>
+        public static string TotalProjectDuration {
+            get {
+                return ResourceManager.GetString("TotalProjectDuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Work hours.
+        /// </summary>
+        public static string WorkHours {
+            get {
+                return ResourceManager.GetString("WorkHours", resourceCulture);
+            }
+        }
     }
 }

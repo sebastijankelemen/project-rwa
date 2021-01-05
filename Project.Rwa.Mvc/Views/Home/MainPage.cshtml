@@ -1,51 +1,62 @@
 ﻿@model IEnumerable<Project.Rwa.Mvc.Projekt>
+@using Project.Rwa.Mvc.Resources
 
 @{
     ViewBag.Title = "MainPage";
 }
 
-<h2>MainPage</h2>
+<h2>@(Strings.MainPage)</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Naziv)
+            @(Strings.Project)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DatumOtvaranja)
+            @(Strings.TotalProjectDuration)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VoditeljProjektaID)
+            @(Strings.ProjectStart)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Klijent.Naziv)
+            @(Strings.ProjectEnd)
         </th>
-        <th></th>
+        <th>
+            @(Strings.WorkHours)
+        </th>
+        <th>
+            @(Strings.OverTimeHours)
+        </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Naziv)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DatumOtvaranja)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VoditeljProjektaID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Klijent.Naziv)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDProjekt }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDProjekt }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDProjekt })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Naziv)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DatumOtvaranja)
+    </td>
+    <td>
+        <input type="submit" class="btn-outline-success" value="Insert" name='button' />
+    </td>
+    <td>
+        <input type="submit" class="btn-outline-danger" value="Insert" name='button' />
+    </td>
+    <td>
+        <div class="form-group">
+            @Html.EditorFor(modelItem => item.Naziv, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(modelItem => item.Naziv, "", new { @class = "text-danger" })
+        </div>
+    </td>
+    <td>
+        <div class="form-group">
+            @Html.EditorFor(modelItem => item.Naziv, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(modelItem => item.Naziv, "", new { @class = "text-danger" })
+        </div>
+    </td>
+</tr>
+    }
 
 </table>
