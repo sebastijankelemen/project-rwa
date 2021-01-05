@@ -27,7 +27,7 @@ namespace Project.Rwa.Mvc.Controllers
                 if (obj != null)
                 {
                     Session["UserEmail"] = obj.Email;
-                    return RedirectToAction("MainPage");
+                    return RedirectToAction("MainPage", obj);
                 }
             }
 
@@ -36,13 +36,17 @@ namespace Project.Rwa.Mvc.Controllers
             return View(objUser);
         }
 
-        public ActionResult MainPage()
+        public ActionResult MainPage(Djelatnik djelatnik)
         {
             if (Session["UserEmail"] != null)
             {
 
                 WorkHoursEntities db = new WorkHoursEntities();
-                return View(db.Projekts.ToList());
+                var userProjects = db.ProjektDjelatniks
+                    .Where(p => p.DjelatnikID == djelatnik.IDDjelatnik)
+                    .Select(p => p.Projekt);
+                  
+                return View(userProjects);
             }
             else
             {
