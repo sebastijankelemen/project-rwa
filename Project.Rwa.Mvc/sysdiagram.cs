@@ -12,14 +12,12 @@ namespace Project.Rwa.Mvc
     using System;
     using System.Collections.Generic;
     
-    public partial class ProjektDjelatnik
+    public partial class sysdiagram
     {
-        public short IDProjektDjelatnik { get; set; }
-        public short ProjektID { get; set; }
-        public short DjelatnikID { get; set; }
-        public Nullable<System.DateTime> RadniSati { get; set; }
-    
-        public virtual Djelatnik Djelatnik { get; set; }
-        public virtual Projekt Projekt { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WorkHoursModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WorkHoursModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Djelatnik">
           <Key>
             <PropertyRef Name="IDDjelatnik" />
@@ -44,6 +44,17 @@
           <Property Name="IDProjektDjelatnik" Type="smallint" Nullable="false" />
           <Property Name="ProjektID" Type="smallint" Nullable="false" />
           <Property Name="DjelatnikID" Type="smallint" Nullable="false" />
+          <Property Name="RadniSati" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Tim">
           <Key>
@@ -108,18 +119,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProjektDj__Djela__628FA481">
-          <End Role="Djelatnik" Type="Self.Djelatnik" Multiplicity="1" />
-          <End Role="ProjektDjelatnik" Type="Self.ProjektDjelatnik" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Djelatnik">
-              <PropertyRef Name="IDDjelatnik" />
-            </Principal>
-            <Dependent Role="ProjektDjelatnik">
-              <PropertyRef Name="DjelatnikID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__ProjektDj__Proje__5CD6CB2B">
           <End Role="Projekt" Type="Self.Projekt" Multiplicity="1" />
           <End Role="ProjektDjelatnik" Type="Self.ProjektDjelatnik" Multiplicity="*" />
@@ -137,6 +136,7 @@
           <EntitySet Name="Klijent" EntityType="Self.Klijent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Projekt" EntityType="Self.Projekt" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProjektDjelatnik" EntityType="Self.ProjektDjelatnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tim" EntityType="Self.Tim" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipDjelatnika" EntityType="Self.TipDjelatnika" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Djelatnik__TimID__66603565" Association="Self.FK__Djelatnik__TimID__66603565">
@@ -155,17 +155,12 @@
             <End Role="Djelatnik" EntitySet="Djelatnik" />
             <End Role="ProjektDjelatnik" EntitySet="ProjektDjelatnik" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProjektDj__Djela__628FA481" Association="Self.FK__ProjektDj__Djela__628FA481">
-            <End Role="Djelatnik" EntitySet="Djelatnik" />
-            <End Role="ProjektDjelatnik" EntitySet="ProjektDjelatnik" />
-          </AssociationSet>
           <AssociationSet Name="FK__ProjektDj__Proje__5CD6CB2B" Association="Self.FK__ProjektDj__Proje__5CD6CB2B">
             <End Role="Projekt" EntitySet="Projekt" />
             <End Role="ProjektDjelatnik" EntitySet="ProjektDjelatnik" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WorkHoursModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -184,7 +179,6 @@
           <NavigationProperty Name="Tim" Relationship="Self.FK__Djelatnik__TimID__66603565" FromRole="Djelatnik" ToRole="Tim" />
           <NavigationProperty Name="TipDjelatnika" Relationship="Self.FK__Djelatnik__TipDj__6383C8BA" FromRole="Djelatnik" ToRole="TipDjelatnika" />
           <NavigationProperty Name="ProjektDjelatniks" Relationship="Self.FK__ProjektDj__Djela__5FB337D6" FromRole="Djelatnik" ToRole="ProjektDjelatnik" />
-          <NavigationProperty Name="ProjektDjelatniks1" Relationship="Self.FK__ProjektDj__Djela__628FA481" FromRole="Djelatnik" ToRole="ProjektDjelatnik" />
         </EntityType>
         <EntityType Name="Klijent">
           <Key>
@@ -216,8 +210,8 @@
           <Property Name="ProjektID" Type="Int16" Nullable="false" />
           <Property Name="DjelatnikID" Type="Int16" Nullable="false" />
           <NavigationProperty Name="Djelatnik" Relationship="Self.FK__ProjektDj__Djela__5FB337D6" FromRole="ProjektDjelatnik" ToRole="Djelatnik" />
-          <NavigationProperty Name="Djelatnik1" Relationship="Self.FK__ProjektDj__Djela__628FA481" FromRole="ProjektDjelatnik" ToRole="Djelatnik" />
           <NavigationProperty Name="Projekt" Relationship="Self.FK__ProjektDj__Proje__5CD6CB2B" FromRole="ProjektDjelatnik" ToRole="Projekt" />
+          <Property Name="RadniSati" Type="DateTime" Precision="7" />
         </EntityType>
         <EntityType Name="Tim">
           <Key>
@@ -272,18 +266,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProjektDj__Djela__628FA481">
-          <End Role="Djelatnik" Type="Self.Djelatnik" Multiplicity="1" />
-          <End Role="ProjektDjelatnik" Type="Self.ProjektDjelatnik" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Djelatnik">
-              <PropertyRef Name="IDDjelatnik" />
-            </Principal>
-            <Dependent Role="ProjektDjelatnik">
-              <PropertyRef Name="DjelatnikID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Projekt__Klijent__59FA5E80">
           <End Role="Klijent" Type="Self.Klijent" Multiplicity="1" />
           <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
@@ -327,10 +309,6 @@
             <End Role="Djelatnik" EntitySet="Djelatniks" />
             <End Role="ProjektDjelatnik" EntitySet="ProjektDjelatniks" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProjektDj__Djela__628FA481" Association="Self.FK__ProjektDj__Djela__628FA481">
-            <End Role="Djelatnik" EntitySet="Djelatniks" />
-            <End Role="ProjektDjelatnik" EntitySet="ProjektDjelatniks" />
-          </AssociationSet>
           <AssociationSet Name="FK__Projekt__Klijent__59FA5E80" Association="Self.FK__Projekt__Klijent__59FA5E80">
             <End Role="Klijent" EntitySet="Klijents" />
             <End Role="Projekt" EntitySet="Projekts" />
@@ -339,7 +317,18 @@
             <End Role="Projekt" EntitySet="Projekts" />
             <End Role="ProjektDjelatnik" EntitySet="ProjektDjelatniks" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="WorkHoursModel.sysdiagram" />
         </EntityContainer>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -384,6 +373,7 @@
           <EntitySetMapping Name="ProjektDjelatniks">
             <EntityTypeMapping TypeName="WorkHoursModel.ProjektDjelatnik">
               <MappingFragment StoreEntitySet="ProjektDjelatnik">
+                <ScalarProperty Name="RadniSati" ColumnName="RadniSati" />
                 <ScalarProperty Name="IDProjektDjelatnik" ColumnName="IDProjektDjelatnik" />
                 <ScalarProperty Name="ProjektID" ColumnName="ProjektID" />
                 <ScalarProperty Name="DjelatnikID" ColumnName="DjelatnikID" />
@@ -404,6 +394,17 @@
               <MappingFragment StoreEntitySet="TipDjelatnika">
                 <ScalarProperty Name="IDTipDjelatnika" ColumnName="IDTipDjelatnika" />
                 <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="WorkHoursModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

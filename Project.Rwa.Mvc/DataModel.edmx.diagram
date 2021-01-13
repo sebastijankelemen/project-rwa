@@ -14,9 +14,9 @@
         <AssociationConnector Association="WorkHoursModel.FK__Djelatnik__TimID__66603565" ManuallyRouted="false" />
         <AssociationConnector Association="WorkHoursModel.FK__Djelatnik__TipDj__6383C8BA" ManuallyRouted="false" />
         <AssociationConnector Association="WorkHoursModel.FK__ProjektDj__Djela__5FB337D6" ManuallyRouted="false" />
-        <AssociationConnector Association="WorkHoursModel.FK__ProjektDj__Djela__628FA481" ManuallyRouted="false" />
         <AssociationConnector Association="WorkHoursModel.FK__Projekt__Klijent__59FA5E80" ManuallyRouted="false" />
         <AssociationConnector Association="WorkHoursModel.FK__ProjektDj__Proje__5CD6CB2B" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WorkHoursModel.sysdiagram" Width="1.5" PointX="3.375" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

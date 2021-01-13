@@ -31,5 +31,6 @@ namespace Project.Rwa.Mvc
         public virtual DbSet<ProjektDjelatnik> ProjektDjelatniks { get; set; }
         public virtual DbSet<Tim> Tims { get; set; }
         public virtual DbSet<TipDjelatnika> TipDjelatnikas { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

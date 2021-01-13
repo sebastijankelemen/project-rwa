@@ -18,7 +18,6 @@ namespace Project.Rwa.Mvc
         public Djelatnik()
         {
             this.ProjektDjelatniks = new HashSet<ProjektDjelatnik>();
-            this.ProjektDjelatniks1 = new HashSet<ProjektDjelatnik>();
         }
     
         public short IDDjelatnik { get; set; }
@@ -34,7 +33,5 @@ namespace Project.Rwa.Mvc
         public virtual TipDjelatnika TipDjelatnika { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProjektDjelatnik> ProjektDjelatniks { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProjektDjelatnik> ProjektDjelatniks1 { get; set; }
     }
 }

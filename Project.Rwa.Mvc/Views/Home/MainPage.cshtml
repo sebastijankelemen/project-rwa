@@ -31,32 +31,33 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Naziv)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DatumOtvaranja)
-    </td>
-    <td>
-        <input type="submit" class="btn-outline-success" value="Insert" name='button' />
-    </td>
-    <td>
-        <input type="submit" class="btn-outline-danger" value="Insert" name='button' />
-    </td>
-    <td>
-        <div class="form-group">
-            @Html.EditorFor(modelItem => item.Naziv, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(modelItem => item.Naziv, "", new { @class = "text-danger" })
-        </div>
-    </td>
-    <td>
-        <div class="form-group">
-            @Html.EditorFor(modelItem => item.Naziv, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(modelItem => item.Naziv, "", new { @class = "text-danger" })
-        </div>
-    </td>
-</tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatumOtvaranja)
+            </td>
+            <td>
+                <input type="submit" class="btn-outline-success" value="Insert" name='button' />
+            </td>
+            <td>
+                <input type="submit" class="btn-outline-danger" value="Insert" name='button' />
+            </td>
+            <td>
+                <div class="form-group">
+                    @Html.EditorFor(modelItem => item.Naziv, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(modelItem => item.Naziv, "", new { @class = "text-danger" })
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    @Html.EditorFor(modelItem => item.Naziv, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(modelItem => item.Naziv, "", new { @class = "text-danger" })
+                </div>
+            </td>
+        </tr>
     }
-
 </table>
+<h3>Comment</h3>
+<textarea class="form-control" rows="4" cols="20"></textarea>
