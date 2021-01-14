@@ -133,11 +133,29 @@ namespace Project.Rwa.Mvc.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stop.
+        /// </summary>
+        public static string ProjectEndLabel {
+            get {
+                return ResourceManager.GetString("ProjectEndLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start.
         /// </summary>
         public static string ProjectStart {
             get {
                 return ResourceManager.GetString("ProjectStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        public static string ProjectStartLabel {
+            get {
+                return ResourceManager.GetString("ProjectStartLabel", resourceCulture);
             }
         }
         

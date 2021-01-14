@@ -1,4 +1,5 @@
-﻿using Project.Rwa.Mvc.Resources;
+﻿using Project.Rwa.Mvc.Models;
+using Project.Rwa.Mvc.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,18 +41,26 @@ namespace Project.Rwa.Mvc.Controllers
         {
             if (Session["UserEmail"] != null)
             {
-
-                WorkHoursEntities db = new WorkHoursEntities();
+                var db = new WorkHoursEntities();
                 var userProjects = db.ProjektDjelatniks
                     .Where(p => p.DjelatnikID == djelatnik.IDDjelatnik)
-                    .Select(p => p.Projekt);
-                  
+                    .AsEnumerable()
+                    .Select(p => new ProjectViewModel(p));
+             
                 return View(userProjects);
             }
-            else
-            {
-                return RedirectToAction("Login");
-            }
+
+            return RedirectToAction("Login");
+        }
+
+        public ActionResult ProjectStart()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ActionResult ProjectEnd()
+        {
+            throw new NotImplementedException();
         }
     }
 }
