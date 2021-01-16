@@ -19,6 +19,8 @@ namespace Project.Rwa.Mvc.Models
             }
         }
 
+        public Djelatnik User => projektDjelatnik.Djelatnik;
+
         public ProjectViewModel(ProjektDjelatnik projektDjelatnik)
         {
             this.projektDjelatnik = projektDjelatnik;

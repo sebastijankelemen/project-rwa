@@ -129,10 +129,19 @@
   <data name="LoginPageHeading" xml:space="preserve">
     <value>Prijava</value>
   </data>
+  <data name="LogOutButton" xml:space="preserve">
+    <value>Odjava</value>
+  </data>
+  <data name="MainPageHeading" xml:space="preserve">
+    <value>Projekti</value>
+  </data>
   <data name="MainTitle" xml:space="preserve">
     <value>Work Hours</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Zaporka</value>
+  </data>
+  <data name="UserEditHeading" xml:space="preserve">
+    <value>Podatci o korisniku</value>
   </data>
 </root>

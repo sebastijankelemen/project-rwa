@@ -129,10 +129,19 @@
   <data name="LoginPageHeading" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="LogOutButton" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="MainPageHeading" xml:space="preserve">
+    <value>Projects</value>
+  </data>
   <data name="MainTitle" xml:space="preserve">
     <value>Work Hours</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="UserEditHeading" xml:space="preserve">
+    <value>Edit User</value>
   </data>
 </root>

@@ -5,11 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Project.Rwa.Mvc.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly WorkHoursEntities db = new WorkHoursEntities();
+
         public ActionResult Login()
         {
             return View();
@@ -21,7 +24,6 @@ namespace Project.Rwa.Mvc.Controllers
         {
             if (ModelState.IsValid)
             {
-                WorkHoursEntities db = new WorkHoursEntities();
                 var obj = db.Djelatniks.Where(a => a.Email.Equals(objUser.Email)
                            && a.Zaporka.Equals(objUser.Zaporka)).FirstOrDefault();
 
@@ -37,11 +39,17 @@ namespace Project.Rwa.Mvc.Controllers
             return View(objUser);
         }
 
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Login", "Home");
+        }
+
         public ActionResult MainPage(Djelatnik djelatnik)
         {
             if (Session["UserEmail"] != null)
             {
-                var db = new WorkHoursEntities();
                 var userProjects = db.ProjektDjelatniks
                     .Where(p => p.DjelatnikID == djelatnik.IDDjelatnik)
                     .AsEnumerable()
@@ -51,6 +59,18 @@ namespace Project.Rwa.Mvc.Controllers
             }
 
             return RedirectToAction("Login");
+        }
+
+        public ActionResult UserEdit()
+        {
+            string userEmail = Session["UserEmail"].ToString();
+
+            var user = db.ProjektDjelatniks
+                .Where(p => p.Djelatnik.Email.Equals(userEmail))
+                .Select(p => p.Djelatnik)
+                .FirstOrDefault();
+
+            return View(user);
         }
 
         public ActionResult ProjectStart()

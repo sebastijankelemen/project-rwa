@@ -97,6 +97,24 @@ namespace Project.Rwa.Mvc.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        public static string LogOutButton {
+            get {
+                return ResourceManager.GetString("LogOutButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projects.
+        /// </summary>
+        public static string MainPageHeading {
+            get {
+                return ResourceManager.GetString("MainPageHeading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Work Hours.
         /// </summary>
         public static string MainTitle {
@@ -111,6 +129,15 @@ namespace Project.Rwa.Mvc.Resources {
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit User.
+        /// </summary>
+        public static string UserEditHeading {
+            get {
+                return ResourceManager.GetString("UserEditHeading", resourceCulture);
             }
         }
     }
