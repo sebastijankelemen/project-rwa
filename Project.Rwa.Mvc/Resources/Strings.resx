@@ -117,43 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutInfo" xml:space="preserve">
-    <value>Sebastijan Kelemen RWA Project</value>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
   </data>
   <data name="FailedLoginMessage" xml:space="preserve">
-    <value>Incorect email or password</value>
+    <value>Incorrect email or password</value>
   </data>
-  <data name="Login" xml:space="preserve">
+  <data name="LoginButton" xml:space="preserve">
     <value>Login</value>
   </data>
-  <data name="MainPage" xml:space="preserve">
-    <value>Workhours list</value>
+  <data name="LoginPageHeading" xml:space="preserve">
+    <value>Login</value>
   </data>
   <data name="MainTitle" xml:space="preserve">
     <value>Work Hours</value>
   </data>
-  <data name="OverTimeHours" xml:space="preserve">
-    <value>Overtime</value>
-  </data>
-  <data name="Project" xml:space="preserve">
-    <value>Project</value>
-  </data>
-  <data name="ProjectEnd" xml:space="preserve">
-    <value>Stop</value>
-  </data>
-  <data name="ProjectEndLabel" xml:space="preserve">
-    <value>Stop</value>
-  </data>
-  <data name="ProjectStart" xml:space="preserve">
-    <value>Start</value>
-  </data>
-  <data name="ProjectStartLabel" xml:space="preserve">
-    <value>Start</value>
-  </data>
-  <data name="TotalProjectDuration" xml:space="preserve">
-    <value>Project duration</value>
-  </data>
-  <data name="WorkHours" xml:space="preserve">
-    <value>Work hours</value>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
   </data>
 </root>

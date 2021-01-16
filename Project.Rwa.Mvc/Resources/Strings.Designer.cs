@@ -61,16 +61,16 @@ namespace Project.Rwa.Mvc.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sebastijan Kelemen RWA Project.
+        ///   Looks up a localized string similar to Email.
         /// </summary>
-        public static string AboutInfo {
+        public static string Email {
             get {
-                return ResourceManager.GetString("AboutInfo", resourceCulture);
+                return ResourceManager.GetString("Email", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Incorect email or password.
+        ///   Looks up a localized string similar to Incorrect email or password.
         /// </summary>
         public static string FailedLoginMessage {
             get {
@@ -81,18 +81,18 @@ namespace Project.Rwa.Mvc.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
-        public static string Login {
+        public static string LoginButton {
             get {
-                return ResourceManager.GetString("Login", resourceCulture);
+                return ResourceManager.GetString("LoginButton", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Workhours list.
+        ///   Looks up a localized string similar to Login.
         /// </summary>
-        public static string MainPage {
+        public static string LoginPageHeading {
             get {
-                return ResourceManager.GetString("MainPage", resourceCulture);
+                return ResourceManager.GetString("LoginPageHeading", resourceCulture);
             }
         }
         
@@ -106,74 +106,11 @@ namespace Project.Rwa.Mvc.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overtime.
+        ///   Looks up a localized string similar to Password.
         /// </summary>
-        public static string OverTimeHours {
+        public static string Password {
             get {
-                return ResourceManager.GetString("OverTimeHours", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Project.
-        /// </summary>
-        public static string Project {
-            get {
-                return ResourceManager.GetString("Project", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Stop.
-        /// </summary>
-        public static string ProjectEnd {
-            get {
-                return ResourceManager.GetString("ProjectEnd", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Stop.
-        /// </summary>
-        public static string ProjectEndLabel {
-            get {
-                return ResourceManager.GetString("ProjectEndLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Start.
-        /// </summary>
-        public static string ProjectStart {
-            get {
-                return ResourceManager.GetString("ProjectStart", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Start.
-        /// </summary>
-        public static string ProjectStartLabel {
-            get {
-                return ResourceManager.GetString("ProjectStartLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Project duration.
-        /// </summary>
-        public static string TotalProjectDuration {
-            get {
-                return ResourceManager.GetString("TotalProjectDuration", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Work hours.
-        /// </summary>
-        public static string WorkHours {
-            get {
-                return ResourceManager.GetString("WorkHours", resourceCulture);
+                return ResourceManager.GetString("Password", resourceCulture);
             }
         }
     }
