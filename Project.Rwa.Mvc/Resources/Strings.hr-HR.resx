@@ -138,10 +138,34 @@
   <data name="MainTitle" xml:space="preserve">
     <value>Work Hours</value>
   </data>
+  <data name="OverTimeHoursHeading" xml:space="preserve">
+    <value>Prekovremeno</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Zaporka</value>
   </data>
+  <data name="ProjectStartHeading" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="ProjectStopHeading" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="ProjectTableHeading" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
+  <data name="StartButton" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="StopButton" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="TotalWorkHoursHeading" xml:space="preserve">
+    <value>Ukupno</value>
+  </data>
   <data name="UserEditHeading" xml:space="preserve">
     <value>Podatci o korisniku</value>
+  </data>
+  <data name="WorkHoursHeading" xml:space="preserve">
+    <value>Radni sati</value>
   </data>
 </root>

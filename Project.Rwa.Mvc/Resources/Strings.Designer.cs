@@ -124,6 +124,15 @@ namespace Project.Rwa.Mvc.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Overtime.
+        /// </summary>
+        public static string OverTimeHoursHeading {
+            get {
+                return ResourceManager.GetString("OverTimeHoursHeading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Password {
@@ -133,11 +142,74 @@ namespace Project.Rwa.Mvc.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        public static string ProjectStartHeading {
+            get {
+                return ResourceManager.GetString("ProjectStartHeading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop.
+        /// </summary>
+        public static string ProjectStopHeading {
+            get {
+                return ResourceManager.GetString("ProjectStopHeading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project.
+        /// </summary>
+        public static string ProjectTableHeading {
+            get {
+                return ResourceManager.GetString("ProjectTableHeading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        public static string StartButton {
+            get {
+                return ResourceManager.GetString("StartButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop.
+        /// </summary>
+        public static string StopButton {
+            get {
+                return ResourceManager.GetString("StopButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total hours.
+        /// </summary>
+        public static string TotalWorkHoursHeading {
+            get {
+                return ResourceManager.GetString("TotalWorkHoursHeading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit User.
         /// </summary>
         public static string UserEditHeading {
             get {
                 return ResourceManager.GetString("UserEditHeading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Work hours.
+        /// </summary>
+        public static string WorkHoursHeading {
+            get {
+                return ResourceManager.GetString("WorkHoursHeading", resourceCulture);
             }
         }
     }

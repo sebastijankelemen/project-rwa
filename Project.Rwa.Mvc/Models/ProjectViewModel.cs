@@ -9,15 +9,26 @@ namespace Project.Rwa.Mvc.Models
     {
         private readonly ProjektDjelatnik projektDjelatnik;
 
-        public string Name => projektDjelatnik.Projekt.Naziv;
-        public string TotalTimeDuration
+        public string Project => projektDjelatnik.Projekt.Naziv;
+        public string TotalWorkHours
         {
             get
             {
-                var duration = projektDjelatnik.RadniSati.GetValueOrDefault();
-                return duration.ToString("HH:mm");
+                var endDate = projektDjelatnik?.RadniSati1?.KrajTrajanja;
+                var startDate = projektDjelatnik?.RadniSati1?.PocetakTrajanja;
+
+                if(!endDate.HasValue || !startDate.HasValue)
+                {
+                    return string.Empty;
+                }
+
+                var total = (endDate - startDate);
+
+                return total.Value.ToString("HH:mm");
             }
         }
+
+
 
         public Djelatnik User => projektDjelatnik.Djelatnik;
 

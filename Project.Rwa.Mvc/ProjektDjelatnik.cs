@@ -17,9 +17,10 @@ namespace Project.Rwa.Mvc
         public short IDProjektDjelatnik { get; set; }
         public short ProjektID { get; set; }
         public short DjelatnikID { get; set; }
-        public Nullable<System.DateTime> RadniSati { get; set; }
+        public Nullable<byte> RadniSatiID { get; set; }
     
         public virtual Djelatnik Djelatnik { get; set; }
         public virtual Projekt Projekt { get; set; }
+        public virtual RadniSati RadniSati1 { get; set; }
     }
 }

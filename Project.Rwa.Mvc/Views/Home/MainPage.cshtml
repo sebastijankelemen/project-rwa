@@ -9,8 +9,8 @@
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <span class="navbar-brand mb-0 h4">@(Strings.MainPageHeading)</span>
                     <div class="collapse navbar-collapse">
-                        <form class="form-inline ml-auto mr-5">
-                            <input class="form-control mr-sm-2" type="date" placeholder="Search" aria-label="Search">
+                        <form class="form-inline ml-auto mr-3">
+                            <input class="form-control mr-sm-2" type="date" placeholder="Search" value="@(DateTime.Now.ToString("yyyy-MM-dd"))" aria-label="Search">
                         </form>
                         <ul class="navbar-nav">
                             <li class="nav-item active">
@@ -20,14 +20,69 @@
                                 }
                             </li>
                             <li class="nav-item">
-                                @Html.ActionLink(Strings.LogOutButton, "LogOut", "Home", null, new {@class = "nav-link" })
+                                @Html.ActionLink(Strings.LogOutButton, "LogOut", "Home", null, new { @class = "nav-link" })
                             </li>
                         </ul>
                     </div>
                 </nav>
             </div>
             <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">@(Strings.ProjectTableHeading)</th>
+                            <th scope="col">@(Strings.TotalWorkHoursHeading)</th>
+                            <th scope="col">@(Strings.ProjectStartHeading)</th>
+                            <th scope="col">@(Strings.ProjectStopHeading)</th>
+                            <th scope="col">@(Strings.WorkHoursHeading)</th>
+                            <th scope="col">@(Strings.OverTimeHoursHeading)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr data-toggle="collapse" data-target="@($"#accordion{item.User.IDDjelatnik}")">
+                                <td>
+                                    @(item.Project)
+                                </td>
+                                <td>
+                                    @(item.TotalWorkHours)
+                                </td>
+                                <td>
+                                    @Html.ActionLink(Strings.StartButton, "ProjectStart", "Home", null, new { id = "buttonStart", @class = "btn btn-success" })
 
+                                </td>
+                                <td>
+                                    @Html.ActionLink(Strings.StopButton, "ProjectEnd", "Home", null, new { id = "buttonStop", @class = "btn btn-danger" })
+                                </td>
+                                <td>
+                                    @(item.Project)
+                                </td>
+                                <td>
+                                    @(item.Project)
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td colspan="3">
+                                    <div id="@($"accordion{item.User.IDDjelatnik}")" class="collapse">Hidden by default</div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group">
+                        
+                        @*@Html.LabelFor(m => null, Strings.Password)
+                        @Html.TextAreaFor(m => m.Zaporka, "", new { @class = "form-control", @placeholder = "Password" })*@
+                        
+                    </div>
+                }
             </div>
         </div>
     </div>
