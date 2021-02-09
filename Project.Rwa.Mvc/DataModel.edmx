@@ -44,7 +44,6 @@
           <Property Name="IDProjektDjelatnik" Type="smallint" Nullable="false" />
           <Property Name="ProjektID" Type="smallint" Nullable="false" />
           <Property Name="DjelatnikID" Type="smallint" Nullable="false" />
-          <Property Name="RadniSatiID" Type="tinyint" />
         </EntityType>
         <EntityType Name="RadniSati">
           <Key>
@@ -53,6 +52,7 @@
           <Property Name="IDRadniSati" Type="tinyint" Nullable="false" />
           <Property Name="PocetakTrajanja" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="KrajTrajanja" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ProjektDjelatnikID" Type="smallint" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -139,18 +139,49 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProjektDj__Radni__6FE99F9F">
-          <End Role="RadniSati" Type="Self.RadniSati" Multiplicity="0..1" />
-          <End Role="ProjektDjelatnik" Type="Self.ProjektDjelatnik" Multiplicity="*" />
+        <Association Name="FK__RadniSati__Proje__01142BA1">
+          <End Role="ProjektDjelatnik" Type="Self.ProjektDjelatnik" Multiplicity="0..1" />
+          <End Role="RadniSati" Type="Self.RadniSati" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="RadniSati">
-              <PropertyRef Name="IDRadniSati" />
+            <Principal Role="ProjektDjelatnik">
+              <PropertyRef Name="IDProjektDjelatnik" />
             </Principal>
-            <Dependent Role="ProjektDjelatnik">
-              <PropertyRef Name="RadniSatiID" />
+            <Dependent Role="RadniSati">
+              <PropertyRef Name="ProjektDjelatnikID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="WorkHoursModelStoreContainer">
           <EntitySet Name="Djelatnik" EntityType="Self.Djelatnik" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Klijent" EntityType="Self.Klijent" Schema="dbo" store:Type="Tables" />
@@ -180,9 +211,9 @@
             <End Role="Projekt" EntitySet="Projekt" />
             <End Role="ProjektDjelatnik" EntitySet="ProjektDjelatnik" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProjektDj__Radni__6FE99F9F" Association="Self.FK__ProjektDj__Radni__6FE99F9F">
-            <End Role="RadniSati" EntitySet="RadniSati" />
+          <AssociationSet Name="FK__RadniSati__Proje__01142BA1" Association="Self.FK__RadniSati__Proje__01142BA1">
             <End Role="ProjektDjelatnik" EntitySet="ProjektDjelatnik" />
+            <End Role="RadniSati" EntitySet="RadniSati" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -236,8 +267,7 @@
           <Property Name="DjelatnikID" Type="Int16" Nullable="false" />
           <NavigationProperty Name="Djelatnik" Relationship="Self.FK__ProjektDj__Djela__5FB337D6" FromRole="ProjektDjelatnik" ToRole="Djelatnik" />
           <NavigationProperty Name="Projekt" Relationship="Self.FK__ProjektDj__Proje__5CD6CB2B" FromRole="ProjektDjelatnik" ToRole="Projekt" />
-          <Property Name="RadniSatiID" Type="Byte" />
-          <NavigationProperty Name="RadniSati1" Relationship="WorkHoursModel.FK__ProjektDj__Radni__6FE99F9F" FromRole="ProjektDjelatnik" ToRole="RadniSati" />
+          <NavigationProperty Name="RadniSatis" Relationship="WorkHoursModel.FK__RadniSati__Proje__01142BA1" FromRole="ProjektDjelatnik" ToRole="RadniSati" />
         </EntityType>
         <EntityType Name="Tim">
           <Key>
@@ -345,10 +375,40 @@
           </AssociationSet>
           <EntitySet Name="sysdiagrams" EntityType="WorkHoursModel.sysdiagram" />
           <EntitySet Name="RadniSatis" EntityType="WorkHoursModel.RadniSati" />
-          <AssociationSet Name="FK__ProjektDj__Radni__6FE99F9F" Association="WorkHoursModel.FK__ProjektDj__Radni__6FE99F9F">
-            <End Role="RadniSati" EntitySet="RadniSatis" />
+          <AssociationSet Name="FK__RadniSati__Proje__01142BA1" Association="WorkHoursModel.FK__RadniSati__Proje__01142BA1">
             <End Role="ProjektDjelatnik" EntitySet="ProjektDjelatniks" />
+            <End Role="RadniSati" EntitySet="RadniSatis" />
           </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(WorkHoursModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(WorkHoursModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
         <EntityType Name="sysdiagram">
           <Key>
@@ -367,20 +427,32 @@
           <Property Name="IDRadniSati" Type="Byte" Nullable="false" />
           <Property Name="PocetakTrajanja" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="KrajTrajanja" Type="DateTime" Nullable="false" Precision="7" />
-          <NavigationProperty Name="ProjektDjelatniks" Relationship="WorkHoursModel.FK__ProjektDj__Radni__6FE99F9F" FromRole="RadniSati" ToRole="ProjektDjelatnik" />
+          <Property Name="ProjektDjelatnikID" Type="Int16" />
+          <NavigationProperty Name="ProjektDjelatnik" Relationship="WorkHoursModel.FK__RadniSati__Proje__01142BA1" FromRole="RadniSati" ToRole="ProjektDjelatnik" />
         </EntityType>
-        <Association Name="FK__ProjektDj__Radni__6FE99F9F">
-          <End Type="WorkHoursModel.RadniSati" Role="RadniSati" Multiplicity="0..1" />
-          <End Type="WorkHoursModel.ProjektDjelatnik" Role="ProjektDjelatnik" Multiplicity="*" />
+        <Association Name="FK__RadniSati__Proje__01142BA1">
+          <End Type="WorkHoursModel.ProjektDjelatnik" Role="ProjektDjelatnik" Multiplicity="0..1" />
+          <End Type="WorkHoursModel.RadniSati" Role="RadniSati" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="RadniSati">
-              <PropertyRef Name="IDRadniSati" />
+            <Principal Role="ProjektDjelatnik">
+              <PropertyRef Name="IDProjektDjelatnik" />
             </Principal>
-            <Dependent Role="ProjektDjelatnik">
-              <PropertyRef Name="RadniSatiID" />
+            <Dependent Role="RadniSati">
+              <PropertyRef Name="ProjektDjelatnikID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -425,7 +497,6 @@
           <EntitySetMapping Name="ProjektDjelatniks">
             <EntityTypeMapping TypeName="WorkHoursModel.ProjektDjelatnik">
               <MappingFragment StoreEntitySet="ProjektDjelatnik">
-                <ScalarProperty Name="RadniSatiID" ColumnName="RadniSatiID" />
                 <ScalarProperty Name="IDProjektDjelatnik" ColumnName="IDProjektDjelatnik" />
                 <ScalarProperty Name="ProjektID" ColumnName="ProjektID" />
                 <ScalarProperty Name="DjelatnikID" ColumnName="DjelatnikID" />
@@ -463,12 +534,37 @@
           <EntitySetMapping Name="RadniSatis">
             <EntityTypeMapping TypeName="WorkHoursModel.RadniSati">
               <MappingFragment StoreEntitySet="RadniSati">
+                <ScalarProperty Name="ProjektDjelatnikID" ColumnName="ProjektDjelatnikID" />
                 <ScalarProperty Name="KrajTrajanja" ColumnName="KrajTrajanja" />
                 <ScalarProperty Name="PocetakTrajanja" ColumnName="PocetakTrajanja" />
                 <ScalarProperty Name="IDRadniSati" ColumnName="IDRadniSati" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="WorkHoursModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="WorkHoursModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="WorkHoursModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="WorkHoursModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WorkHoursModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="WorkHoursModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WorkHoursModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="WorkHoursModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="WorkHoursModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

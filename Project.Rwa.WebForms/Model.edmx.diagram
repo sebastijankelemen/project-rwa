@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c8e71dcf5f184d52a786462b104ae918" Name="Diagram1">
+        <EntityTypeShape EntityType="WorkHoursModel.Djelatnik" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkHoursModel.Klijent" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkHoursModel.Projekt" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkHoursModel.ProjektDjelatnik" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkHoursModel.RadniSati" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkHoursModel.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkHoursModel.Tim" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkHoursModel.TipDjelatnika" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="WorkHoursModel.FK__Djelatnik__TimID__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="WorkHoursModel.FK__Djelatnik__TipDj__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="WorkHoursModel.FK__ProjektDj__Djela__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="WorkHoursModel.FK__Projekt__Klijent__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="WorkHoursModel.FK__ProjektDj__Proje__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="WorkHoursModel.FK__RadniSati__Proje__01142BA1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

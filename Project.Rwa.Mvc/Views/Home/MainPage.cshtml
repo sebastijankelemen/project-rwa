@@ -41,7 +41,7 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr data-toggle="collapse" data-target="@($"#accordion{item.User.IDDjelatnik}")">
+                            <tr class="collapse-click">
                                 <td>
                                     @(item.Project)
                                 </td>
@@ -56,27 +56,30 @@
                                     @Html.ActionLink(Strings.StopButton, "ProjectEnd", "Home", null, new { id = "buttonStop", @class = "btn btn-danger" })
                                 </td>
                                 <td>
-                                    @(item.Project)
+                                    @Html.TextBoxFor(c => it , "", new { @class = "form-control", @placeholder = "Password" })
                                 </td>
                                 <td>
                                     @(item.Project)
                                 </td>
                             </tr>
-
-
-                            <tr>
-                                <td colspan="3">
-                                    <div id="@($"accordion{item.User.IDDjelatnik}")" class="collapse">Hidden by default</div>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
+                            foreach (var workHourModel in item.WorkHours)
+                            {
+                                <tr class="collapse">
+                                    <td>@(workHourModel.TimePeriod)</td>
+                                    <td>@(workHourModel.Duration)</td>
+                                    <td colspan="4">
+                                        <button id="@(workHourModel.Id)" class="btn far fa-trash-alt delete-click" />
+                                    </td>
+                                </tr>
+                            }
+                                      }
+                        </tbody>
                 </table>
                 @using (Html.BeginForm())
                 {
-                    @Html.AntiForgeryToken()
+                                          @Html.AntiForgeryToken()
 
-                    <div class="form-group">
+                                          <div class="form-group">
                         
                         @*@Html.LabelFor(m => null, Strings.Password)
                         @Html.TextAreaFor(m => m.Zaporka, "", new { @class = "form-control", @placeholder = "Password" })*@

@@ -1,9 +1,6 @@
 ﻿using Project.Rwa.Mvc.Models;
 using Project.Rwa.Mvc.Resources;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -54,10 +51,11 @@ namespace Project.Rwa.Mvc.Controllers
                     .Where(p => p.DjelatnikID == djelatnik.IDDjelatnik)
                     .AsEnumerable()
                     .Select(p => new ProjectViewModel(p));
-             
+
                 return View(userProjects);
             }
 
+            
             return RedirectToAction("Login");
         }
 
@@ -75,13 +73,7 @@ namespace Project.Rwa.Mvc.Controllers
 
         public ActionResult ProjectStart()
         {
-
-            throw new NotImplementedException();
-        }
-
-        public ActionResult ProjectEnd()
-        {
-            throw new NotImplementedException();
+            return null;
         }
     }
 }

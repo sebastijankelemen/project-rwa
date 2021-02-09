@@ -14,13 +14,19 @@ namespace Project.Rwa.Mvc
     
     public partial class ProjektDjelatnik
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ProjektDjelatnik()
+        {
+            this.RadniSatis = new HashSet<RadniSati>();
+        }
+    
         public short IDProjektDjelatnik { get; set; }
         public short ProjektID { get; set; }
         public short DjelatnikID { get; set; }
-        public Nullable<byte> RadniSatiID { get; set; }
     
         public virtual Djelatnik Djelatnik { get; set; }
         public virtual Projekt Projekt { get; set; }
-        public virtual RadniSati RadniSati1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RadniSati> RadniSatis { get; set; }
     }
 }

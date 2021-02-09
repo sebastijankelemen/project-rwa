@@ -14,17 +14,11 @@ namespace Project.Rwa.Mvc
     
     public partial class RadniSati
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public RadniSati()
-        {
-            this.ProjektDjelatniks = new HashSet<ProjektDjelatnik>();
-        }
-    
         public byte IDRadniSati { get; set; }
         public System.DateTime PocetakTrajanja { get; set; }
         public System.DateTime KrajTrajanja { get; set; }
+        public Nullable<short> ProjektDjelatnikID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProjektDjelatnik> ProjektDjelatniks { get; set; }
+        public virtual ProjektDjelatnik ProjektDjelatnik { get; set; }
     }
 }

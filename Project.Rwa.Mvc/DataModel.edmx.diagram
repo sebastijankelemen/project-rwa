@@ -18,7 +18,7 @@
         <AssociationConnector Association="WorkHoursModel.FK__ProjektDj__Proje__5CD6CB2B" ManuallyRouted="false" />
         <EntityTypeShape EntityType="WorkHoursModel.sysdiagram" Width="1.5" PointX="3.375" PointY="5.75" />
         <EntityTypeShape EntityType="WorkHoursModel.RadniSati" Width="1.5" PointX="8" PointY="6.125" />
-        <AssociationConnector Association="WorkHoursModel.FK__ProjektDj__Radni__6FE99F9F" />
+        <AssociationConnector Association="WorkHoursModel.FK__RadniSati__Proje__01142BA1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

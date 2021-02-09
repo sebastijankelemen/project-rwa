@@ -7,6 +7,8 @@ namespace Project.Rwa.Mvc.Models
 {
     public class ProjectViewModel
     {
+        private const string TimeFormat = "hh\\:mm";
+
         private readonly ProjektDjelatnik projektDjelatnik;
 
         public string Project => projektDjelatnik.Projekt.Naziv;
@@ -14,20 +16,24 @@ namespace Project.Rwa.Mvc.Models
         {
             get
             {
-                var endDate = projektDjelatnik?.RadniSati1?.KrajTrajanja;
-                var startDate = projektDjelatnik?.RadniSati1?.PocetakTrajanja;
-
-                if(!endDate.HasValue || !startDate.HasValue)
-                {
-                    return string.Empty;
-                }
-
-                var total = (endDate - startDate);
-
-                return total.Value.ToString("HH:mm");
+                var hours = projektDjelatnik.RadniSatis.Select(r => r.KrajTrajanja - r.PocetakTrajanja);
+                var totalHours = TimeSpan.FromMilliseconds(hours.Sum(s => s.TotalMilliseconds));
+                return totalHours.ToString(TimeFormat);
             }
         }
 
+        public IEnumerable<WorkHourViewModel> WorkHours
+        {
+            get
+            {
+                var workHours = projektDjelatnik.RadniSatis;
+
+                return workHours.Select(s => 
+                {
+                    return new WorkHourViewModel(s.IDRadniSati, s.PocetakTrajanja, s.KrajTrajanja);
+                });
+            }
+        }
 
 
         public Djelatnik User => projektDjelatnik.Djelatnik;
@@ -36,7 +42,5 @@ namespace Project.Rwa.Mvc.Models
         {
             this.projektDjelatnik = projektDjelatnik;
         }
-
-
     }
 }
